@@ -10,8 +10,9 @@ CERT_LOCATION="/home/$USERNAME/certificate.crt"
 KEY_LOCATION="/home/$USERNAME/certificate.key"
 SSL_CERT_NAME="transip-ssl-twinkeltjenijlen.be-decrypted-certificate.zip"
 APPNAME=VandenEynde
-APPLOWERNAME=VandenEynde
+APPLOWERNAME=vandeneynde
 GITLINK="https://github.com/jensvde/VDESite.git"
+GITPREFIX=VDESite
 
 #Begin of program
 #Check if root
@@ -42,18 +43,18 @@ sudo mysql -e "CREATE USER '$SQL_USER'@'localhost' IDENTIFIED WITH mysql_native_
 sudo mysql -e "GRANT ALL ON *.* TO '$SQL_USER'@'localhost';"
 sudo mysql -e "CREATE DATABASE db;"
 sudo mysql -e "CREATE DATABASE db_users;"
-//sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db.sql
-//sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db_users.sql
+sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db.sql
+sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db_users.sql
 
 #Unzip SSL certificate
 unzip -u $SSL_CERT_NAME
 
 #Getting website from Github
 sudo killall dotnet
-rm -r /home/$USERNAME/$APPNAME
+rm -r /home/$USERNAME/$GITPREFIX
 rm -r /home/$USERNAME/publish
 git clone $GITLINK
-cp -avrfn /home/$USERNAME/$APPNAME/$APPNAME/bin/Release/netcoreapp3.1/publish /home/$USERNAME/publish
+cp -avrfn /home/$USERNAME/$GITPREFIX/$APPNAME/$APPNAME/bin/Release/netcoreapp3.1/publish /home/$USERNAME/publish
 mv /home/$USERNAME/publish/$APPNAME.dll /home/$USERNAME/publish/$APPNAME.dll
 
 #Installing service 
