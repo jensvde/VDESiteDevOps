@@ -4,7 +4,7 @@
 SQL_ROOT_PASS=Test@1234
 SQL_USER=winkel
 SQL_USER_PASS=Winkeltje@1234
-DOMAINNAME=twinkeltjenijlen.be
+DOMAINNAME=vandeneynde.twinkeltjenijlen.be
 USERNAME="twinkeltje_peggy"
 CERT_LOCATION="/home/$USERNAME/certificate.crt"
 KEY_LOCATION="/home/$USERNAME/certificate.key"
@@ -44,7 +44,6 @@ sudo mysql -e "GRANT ALL ON *.* TO '$SQL_USER'@'localhost';"
 sudo mysql -e "CREATE DATABASE db;"
 sudo mysql -e "CREATE DATABASE db_users;"
 sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db.sql
-sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db_users.sql
 
 #Unzip SSL certificate
 unzip -u $SSL_CERT_NAME
