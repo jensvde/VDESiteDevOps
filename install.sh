@@ -44,7 +44,7 @@ sudo mysql -e "GRANT ALL ON *.* TO '$SQL_USER'@'localhost';"
 sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS < db.sql
 
 #Unzip SSL certificate
-unzip -u $SSL_CERT_NAME /home/$USERNAME
+unzip -u $SSL_CERT_NAME -d /home/$USERNAME
 
 #Getting website from Github
 sudo killall dotnet
