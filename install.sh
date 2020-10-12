@@ -41,10 +41,10 @@ sudo apt-get update; \
 #Create MySQL users and import databases
 sudo mysql -e "CREATE USER '$SQL_USER'@'localhost' IDENTIFIED WITH mysql_native_password BY '$SQL_USER_PASS';"
 sudo mysql -e "GRANT ALL ON *.* TO '$SQL_USER'@'localhost';"
-sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db.sql
+sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS < db.sql
 
 #Unzip SSL certificate
-unzip -u $SSL_CERT_NAME
+unzip -u $SSL_CERT_NAME /home/$USERNAME
 
 #Getting website from Github
 sudo killall dotnet
