@@ -41,8 +41,6 @@ sudo apt-get update; \
 #Create MySQL users and import databases
 sudo mysql -e "CREATE USER '$SQL_USER'@'localhost' IDENTIFIED WITH mysql_native_password BY '$SQL_USER_PASS';"
 sudo mysql -e "GRANT ALL ON *.* TO '$SQL_USER'@'localhost';"
-sudo mysql -e "CREATE DATABASE db;"
-sudo mysql -e "CREATE DATABASE db_users;"
 sudo mysql --user=$SQL_USER --password=$SQL_USER_PASS db < db.sql
 
 #Unzip SSL certificate
@@ -52,6 +50,7 @@ unzip -u $SSL_CERT_NAME
 sudo killall dotnet
 rm -r /home/$USERNAME/$GITPREFIX
 rm -r /home/$USERNAME/publish
+cd /home/$USERNAME
 git clone $GITLINK
 cp -avrfn /home/$USERNAME/$GITPREFIX/$APPNAME/$APPNAME/bin/Release/netcoreapp3.1/publish /home/$USERNAME/publish
 mv /home/$USERNAME/publish/$APPNAME.dll /home/$USERNAME/publish/$APPNAME.dll
