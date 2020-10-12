@@ -18,22 +18,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `db`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `db`;
-
---
--- Current Database: `db_users`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `db_users` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `db_users`;
-
---
 -- Current Database: `db_users_vde`
 --
 
@@ -274,6 +258,32 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `db_vde` /*!40100 DEFAULT CHARACTER SET
 USE `db_vde`;
 
 --
+-- Table structure for table `AutoOnderdeel`
+--
+
+DROP TABLE IF EXISTS `AutoOnderdeel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `AutoOnderdeel` (
+  `AutoId` int NOT NULL,
+  `OnderdeelId` int NOT NULL,
+  PRIMARY KEY (`AutoId`,`OnderdeelId`),
+  KEY `IX_AutoOnderdeel_OnderdeelId` (`OnderdeelId`),
+  CONSTRAINT `FK_AutoOnderdeel_Autos_AutoId` FOREIGN KEY (`AutoId`) REFERENCES `Autos` (`AutoId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_AutoOnderdeel_Onderdelen_OnderdeelId` FOREIGN KEY (`OnderdeelId`) REFERENCES `Onderdelen` (`OnderdeelId`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AutoOnderdeel`
+--
+
+LOCK TABLES `AutoOnderdeel` WRITE;
+/*!40000 ALTER TABLE `AutoOnderdeel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AutoOnderdeel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Autos`
 --
 
@@ -300,8 +310,35 @@ CREATE TABLE `Autos` (
 
 LOCK TABLES `Autos` WRITE;
 /*!40000 ALTER TABLE `Autos` DISABLE KEYS */;
-INSERT INTO `Autos` VALUES (1,'Golf Plus JP',4.5,2005,1900,77,'BKC','195/65/15  91H','2020-10-06 00:00:00.000000'),(2,'H1 Eddy',7.5,2011,2500,120,'','215/70/R16C  108/106T','2020-10-06 00:00:00.000000'),(3,'Captiva Eric',0,2008,2000,93,'','','2020-10-06 00:00:00.000000'),(4,'C Max Voet',0,2014,1600,85,'T1DB1H','','2020-10-06 00:00:00.000000'),(5,'Tucson Patje',5.5,2016,1700,85,'D4FD','','2020-10-06 00:00:00.000000'),(6,'berlingo wit 01 kris',5,2001,1900,0,'MBWJYB','','2020-10-06 00:00:00.000000'),(7,'Octavia Kris',4.5,2011,1600,77,'CAY','','2020-10-06 00:00:00.000000'),(8,'Golf Ilse',4.5,2007,2000,0,'','','2020-10-06 00:00:00.000000'),(9,'polo zwart jansens',4.3,2010,1600,55,'CAY','','2020-10-06 00:00:00.000000'),(10,'fabia Ron',4.4,2008,1400,51,'','','2020-10-06 00:00:00.000000'),(11,'208 Jens',4.25,2012,1600,115,'CA5FV8','195/55/16  91V','2020-10-06 00:00:00.000000'),(12,'C220 Sabrina',6.5,2008,2148,120,'','','2020-10-06 00:00:00.000000'),(13,'fiesta magda',4.2,2010,0,0,'','','2020-10-06 00:00:00.000000'),(14,'Ford Ranger',2.5,2016,2895,100,'','','2020-10-06 00:00:00.000000'),(15,'207 Nadine',0,2010,14,50,'C8HZ','185/65R15/88H','2020-10-06 00:00:00.000000');
+INSERT INTO `Autos` VALUES (1,'207 Nadine',0,2010,1400,50,'C8HZ','185/65R15/88H','0001-01-01 00:00:00.000000'),(2,'208 Jens',4.25,2012,1600,115,'CA5FV8','195/55/16  91V','0001-01-01 00:00:00.000000'),(3,'berlingo wit 01 kris',5,2001,1900,0,'MBWJYB',NULL,'0001-01-01 00:00:00.000000'),(4,'C Max Voet',0,2014,1600,85,'T1DB1H',NULL,'0001-01-01 00:00:00.000000'),(5,'C220 Sabrina',6.5,2008,2148,120,NULL,NULL,'0001-01-01 00:00:00.000000'),(6,'Captiva Eric',0,2008,2000,93,NULL,NULL,'0001-01-01 00:00:00.000000'),(7,'fabia Ron',4.4,2008,1400,51,NULL,NULL,'0001-01-01 00:00:00.000000'),(8,'fiesta magda',4.2,2010,0,0,NULL,NULL,'0001-01-01 00:00:00.000000'),(9,'Ford Ranger',2.5,2016,2895,100,NULL,NULL,'0001-01-01 00:00:00.000000'),(10,'Golf Ilse',4.5,2007,2000,0,NULL,NULL,'0001-01-01 00:00:00.000000'),(11,'Golf Plus JP',4.5,2005,1900,77,'BKC','195/65/15  91H','0001-01-01 00:00:00.000000'),(12,'H1 Eddy',7.5,2011,2500,120,NULL,'215/70/R16C  108/106T','0001-01-01 00:00:00.000000'),(13,'Octavia Kris',4.5,2011,1600,77,'CAY',NULL,'0001-01-01 00:00:00.000000'),(14,'polo zwart jansens',4.3,2010,1600,55,'CAY',NULL,'0001-01-01 00:00:00.000000'),(15,'Tucson Patje',5.5,2016,1700,85,'D4FD',NULL,'0001-01-01 00:00:00.000000');
 /*!40000 ALTER TABLE `Autos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Bestelnummers`
+--
+
+DROP TABLE IF EXISTS `Bestelnummers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Bestelnummers` (
+  `BestelnummerId` int NOT NULL AUTO_INCREMENT,
+  `Nr` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `OnderdeelId` int DEFAULT NULL,
+  PRIMARY KEY (`BestelnummerId`),
+  KEY `IX_Bestelnummers_OnderdeelId` (`OnderdeelId`),
+  CONSTRAINT `FK_Bestelnummers_Onderdelen_OnderdeelId` FOREIGN KEY (`OnderdeelId`) REFERENCES `Onderdelen` (`OnderdeelId`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Bestelnummers`
+--
+
+LOCK TABLES `Bestelnummers` WRITE;
+/*!40000 ALTER TABLE `Bestelnummers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Bestelnummers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -313,14 +350,10 @@ DROP TABLE IF EXISTS `Onderdelen`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Onderdelen` (
   `OnderdeelId` int NOT NULL AUTO_INCREMENT,
-  `AutoId` int DEFAULT NULL,
   `Beschrijving` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `Merk` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `BestelNr` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  PRIMARY KEY (`OnderdeelId`),
-  KEY `IX_Onderdelen_AutoId` (`AutoId`),
-  CONSTRAINT `FK_Onderdelen_Autos_AutoId` FOREIGN KEY (`AutoId`) REFERENCES `Autos` (`AutoId`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`OnderdeelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,7 +362,6 @@ CREATE TABLE `Onderdelen` (
 
 LOCK TABLES `Onderdelen` WRITE;
 /*!40000 ALTER TABLE `Onderdelen` DISABLE KEYS */;
-INSERT INTO `Onderdelen` VALUES (1,1,'Olie filter','Bosch','P9192         1457429192'),(2,7,'Brandstof filter','Bosch','1457 070 008         KX220D'),(3,7,'Interieur filter','Bosch','1987 432 097'),(4,7,'Remblokken voor','Bosch','0986 494 019'),(5,8,'Olie filter','Bosch','1 457 429 192'),(6,9,'Olie filter','Bosch','F 026 407 023'),(7,9,'Lucht filter','Bosch','F 026 400 391'),(8,9,'Brandstof filter','Bosch','0 450 906 500'),(9,9,'Interieur filter','Bosch','1987 435 002'),(10,10,'Olie filter','Bosch','1 457 429 192'),(11,7,'Olie filter','Bosch','F026 407 023    OX388D'),(12,10,'Remblokken voor','Bosch','0 986 494 019'),(13,11,'Lucht filter','Bosch','F 026 400 219'),(14,11,'Bougie','Bosch','0 242 135 518'),(15,11,'Interieur filter','Bosch','0 986 628 533'),(16,11,'Wissers voor','Bosch','3 397 007 414'),(17,11,'Wissers achter','Bosch','3 397 004 631'),(18,11,'Waterpomp, multieriem, spanner set','SKF','VKMC 33410'),(19,11,'Remblokken voor','Bosch','0 986 424 825'),(20,11,'Rremschijf voor','Bosch','0 986 479 548'),(21,11,'Poulie waterpomp','Febi','102466'),(22,11,'Olie filter','Bosch','1 457 429 249'),(23,6,'Olie filter','Knecht','OC 100  OC 976'),(24,7,'Lucht filter','Bosch','1987 429 404'),(25,2,'Interieur filter','AMC','HC 80219'),(26,5,'Pollen filter','AMC','HC 8240'),(27,3,'Lucht filter','Bosch','S 0214'),(28,3,'Brandstof filter','Bosch','N 4437'),(29,3,'Interieur filter','Bosch','A 8500'),(30,4,'Lucht filter','Bosch','F 026 400 492'),(31,2,'Remblokken achter','Coldax','CB 210487'),(32,4,'Interieur filter','Bosch','1 987 435 018'),(33,3,'Olie filter','Bosch','P 7001'),(34,1,'Interieur filter','Bosch','1987432097'),(35,1,'Lucht filter','Bosch','1987429404'),(36,5,'Olie filter','Bosch','F 026 407 147'),(37,5,'Lucht filter','AMC','HA 743'),(38,2,'Lucht filter','AMC','HA-720'),(39,5,'Brandstof filter','AMC','HF 616'),(40,2,'Brandstof filter','AMC','KF1478'),(41,5,'Remblokken voor','Bosch','0986 494 559'),(42,1,'Brandstof filter','Bosch','1457070007'),(43,2,'Olie filter','AMC','KO-094 / HO-607 /MO-400');
 /*!40000 ALTER TABLE `Onderdelen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +394,7 @@ CREATE TABLE `Werken` (
 
 LOCK TABLES `Werken` WRITE;
 /*!40000 ALTER TABLE `Werken` DISABLE KEYS */;
-INSERT INTO `Werken` VALUES (1,1,130000,1,1,1,1,'Distributieriem set + waterpomp,  multi V riem,  vrijloop poulie  alternator,  stofkap cardan rv wielkant,  achterste draagarmrubbers L+R vooraan,   ','2020-06-13 00:00:00.000000'),(2,11,91001,0,0,0,0,'Remschijven voor, poulie waterpomp','2020-08-17 00:00:00.000000'),(3,11,91000,1,1,0,0,'Batterij, banden, waterpomp, multie v riem, spanner, wissers voor, wisser achter, remblokken voor, bougies','2020-08-09 00:00:00.000000'),(4,5,91000,1,1,1,1,'Remblokken voor','2020-06-26 00:00:00.000000'),(5,9,134300,1,0,0,0,'dpf drukverschil sensor','2020-07-25 00:00:00.000000'),(6,10,141000,1,0,0,0,'Remblokken voor','2020-07-25 00:00:00.000000'),(7,2,185000,1,0,0,0,NULL,'2020-06-11 00:00:00.000000'),(8,8,156500,1,0,0,0,NULL,'2020-07-23 00:00:00.000000'),(9,7,129500,1,0,0,0,'Remblokken voor','2020-06-28 00:00:00.000000'),(10,7,125500,1,1,1,1,NULL,'2020-06-28 00:00:00.000000'),(11,4,121400,0,1,0,0,NULL,'2020-08-12 00:00:00.000000'),(12,12,188500,1,1,1,1,NULL,'2020-07-15 00:00:00.000000'),(13,6,166000,1,0,0,0,NULL,'2020-06-28 00:00:00.000000'),(14,2,175000,1,0,0,0,'Remblokken achter','2020-06-11 00:00:00.000000'),(15,13,216800,1,0,0,0,NULL,'2020-07-28 00:00:00.000000');
+INSERT INTO `Werken` VALUES (1,11,130000,1,1,1,1,'Distributieriem set + waterpomp,  multi V riem,  vrijloop poulie  alternator,  stofkap cardan rv wielkant,  achterste draagarmrubbers L+R vooraan,   ','2020-06-12 00:00:22.954000'),(2,2,91001,0,0,0,0,'Remschijven voor, poulie waterpomp','2020-08-17 00:00:52.105000'),(3,2,91000,1,1,0,0,'Batterij, banden, waterpomp, multie v riem, spanner, wissers voor, wisser achter, remblokken voor, bougies','2020-08-09 00:00:27.187000'),(4,15,91000,1,1,1,1,'Remblokken voor','2020-06-26 00:00:30.212000'),(5,14,134300,1,0,0,0,'dpf drukverschil sensor','2020-07-25 00:00:38.903000'),(6,7,141000,1,0,0,0,'Remblokken voor','2020-07-25 00:00:59.214000'),(7,12,185000,1,0,0,0,NULL,'2020-06-11 00:00:38.122000'),(8,10,156500,1,0,0,0,NULL,'2020-07-23 00:00:56.207000'),(9,13,129500,1,0,0,0,'Remblokken voor','2020-06-28 00:00:15.707000'),(10,13,125500,1,1,1,1,NULL,'2020-06-28 00:00:57.801000'),(11,4,121400,0,1,0,0,NULL,'2020-08-12 00:00:26.214000'),(12,5,188500,1,1,1,1,NULL,'2020-07-15 00:00:45.711000'),(13,3,166000,1,0,0,0,NULL,'2020-06-28 00:00:05.762000'),(14,12,175000,1,0,0,0,'Remblokken achter','2020-06-11 00:00:28.364000'),(15,8,216800,1,0,0,0,NULL,'2020-07-28 00:00:53.790000');
 /*!40000 ALTER TABLE `Werken` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,10 +415,10 @@ DROP TABLE IF EXISTS `columns_priv`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `columns_priv` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `Db` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `Table_name` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `Column_name` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Table_name` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Column_name` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Column_priv` set('Select','Insert','Update','References') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`Host`,`Db`,`User`,`Table_name`,`Column_name`)
@@ -436,8 +468,8 @@ DROP TABLE IF EXISTS `db`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `db` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `Db` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Select_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   `Insert_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   `Update_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
@@ -481,9 +513,9 @@ DROP TABLE IF EXISTS `default_roles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `default_roles` (
   `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `USER` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `USER` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `DEFAULT_ROLE_HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '%',
-  `DEFAULT_ROLE_USER` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `DEFAULT_ROLE_USER` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   PRIMARY KEY (`HOST`,`USER`,`DEFAULT_ROLE_HOST`,`DEFAULT_ROLE_USER`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Default roles';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -534,9 +566,9 @@ DROP TABLE IF EXISTS `func`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `func` (
-  `name` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `name` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `ret` tinyint NOT NULL DEFAULT '0',
-  `dl` char(128) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `dl` char(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `type` enum('function','aggregate') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`name`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='User defined functions';
@@ -559,7 +591,7 @@ DROP TABLE IF EXISTS `global_grants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `global_grants` (
-  `USER` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `USER` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
   `PRIV` char(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `WITH_GRANT_OPTION` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
@@ -701,7 +733,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-06 16:28:06','n_diff_pfx01',0,1,'RoleId'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-06 16:28:06','n_diff_pfx02',0,1,'RoleId,Id'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-06 16:28:06','n_diff_pfx01',0,1,'NormalizedName'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-06 16:28:06','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-06 16:28:06','n_diff_pfx02',0,1,'UserId,Id'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-06 16:28:06','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-06 16:28:06','n_diff_pfx02',0,1,'UserId,LoginProvider'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-06 16:28:06','n_diff_pfx03',0,1,'UserId,LoginProvider,ProviderKey'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'LoginProvider'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-06 16:28:06','n_diff_pfx02',0,1,'LoginProvider,ProviderKey'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-06 16:28:06','n_diff_pfx01',0,1,'RoleId'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-06 16:28:06','n_diff_pfx02',0,1,'RoleId,UserId'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-06 16:28:06','n_diff_pfx02',0,1,'UserId,RoleId'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-06 16:28:06','n_diff_pfx02',0,1,'UserId,LoginProvider'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-06 16:28:06','n_diff_pfx03',0,1,'UserId,LoginProvider,Name'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-06 16:28:06','n_diff_pfx01',0,1,'NormalizedEmail'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-06 16:28:06','n_diff_pfx02',0,1,'NormalizedEmail,Id'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-06 16:28:06','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-06 16:28:06','n_diff_pfx01',0,1,'NormalizedUserName'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-06 16:28:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-06 16:28:06','size',1,NULL,'Number of pages in the index'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-06 16:28:05','n_diff_pfx01',0,1,'MigrationId'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-06 16:28:05','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-06 16:28:05','size',1,NULL,'Number of pages in the index'),('db_vde','Autos','PRIMARY','2020-10-06 16:37:45','n_diff_pfx01',15,1,'AutoId'),('db_vde','Autos','PRIMARY','2020-10-06 16:37:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Autos','PRIMARY','2020-10-06 16:37:45','size',1,NULL,'Number of pages in the index'),('db_vde','Onderdelen','IX_Onderdelen_AutoId','2020-10-06 16:37:35','n_diff_pfx01',11,1,'AutoId'),('db_vde','Onderdelen','IX_Onderdelen_AutoId','2020-10-06 16:37:35','n_diff_pfx02',43,1,'AutoId,OnderdeelId'),('db_vde','Onderdelen','IX_Onderdelen_AutoId','2020-10-06 16:37:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Onderdelen','IX_Onderdelen_AutoId','2020-10-06 16:37:35','size',1,NULL,'Number of pages in the index'),('db_vde','Onderdelen','PRIMARY','2020-10-06 16:37:35','n_diff_pfx01',43,1,'OnderdeelId'),('db_vde','Onderdelen','PRIMARY','2020-10-06 16:37:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Onderdelen','PRIMARY','2020-10-06 16:37:35','size',1,NULL,'Number of pages in the index'),('db_vde','Werken','IX_Werken_AutoId','2020-10-06 16:37:55','n_diff_pfx01',12,1,'AutoId'),('db_vde','Werken','IX_Werken_AutoId','2020-10-06 16:37:55','n_diff_pfx02',15,1,'AutoId,WerkId'),('db_vde','Werken','IX_Werken_AutoId','2020-10-06 16:37:55','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Werken','IX_Werken_AutoId','2020-10-06 16:37:55','size',1,NULL,'Number of pages in the index'),('db_vde','Werken','PRIMARY','2020-10-06 16:37:55','n_diff_pfx01',15,1,'WerkId'),('db_vde','Werken','PRIMARY','2020-10-06 16:37:55','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Werken','PRIMARY','2020-10-06 16:37:55','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2020-10-06 16:18:32','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2020-10-06 16:18:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2020-10-06 16:18:32','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2020-10-06 16:18:32','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2020-10-06 16:18:32','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2020-10-06 16:18:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2020-10-06 16:18:32','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2020-10-06 16:18:33','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2020-10-06 16:18:33','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2020-10-06 16:18:33','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-12 01:18:02','n_diff_pfx01',0,1,'RoleId'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-12 01:18:02','n_diff_pfx02',0,1,'RoleId,Id'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoleClaims','IX_AspNetRoleClaims_RoleId','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-12 01:18:02','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoleClaims','PRIMARY','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-12 01:18:02','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoles','PRIMARY','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-12 01:18:02','n_diff_pfx01',0,1,'NormalizedName'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetRoles','RoleNameIndex','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-12 01:18:02','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-12 01:18:02','n_diff_pfx02',0,1,'UserId,Id'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserClaims','IX_AspNetUserClaims_UserId','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-12 01:18:02','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserClaims','PRIMARY','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-12 01:18:02','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-12 01:18:02','n_diff_pfx02',0,1,'UserId,LoginProvider'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-12 01:18:02','n_diff_pfx03',0,1,'UserId,LoginProvider,ProviderKey'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserLogins','IX_AspNetUserLogins_UserId','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-12 01:18:02','n_diff_pfx01',0,1,'LoginProvider'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-12 01:18:02','n_diff_pfx02',0,1,'LoginProvider,ProviderKey'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserLogins','PRIMARY','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-12 01:18:02','n_diff_pfx01',0,1,'RoleId'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-12 01:18:02','n_diff_pfx02',0,1,'RoleId,UserId'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserRoles','IX_AspNetUserRoles_RoleId','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-12 01:18:02','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-12 01:18:02','n_diff_pfx02',0,1,'UserId,RoleId'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-12 01:18:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserRoles','PRIMARY','2020-10-12 01:18:02','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-12 01:18:03','n_diff_pfx01',0,1,'UserId'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-12 01:18:03','n_diff_pfx02',0,1,'UserId,LoginProvider'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-12 01:18:03','n_diff_pfx03',0,1,'UserId,LoginProvider,Name'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUserTokens','PRIMARY','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-12 01:18:03','n_diff_pfx01',0,1,'NormalizedEmail'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-12 01:18:03','n_diff_pfx02',0,1,'NormalizedEmail,Id'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','EmailIndex','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-12 01:18:03','n_diff_pfx01',0,1,'Id'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','PRIMARY','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-12 01:18:03','n_diff_pfx01',0,1,'NormalizedUserName'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','AspNetUsers','UserNameIndex','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-12 01:18:03','n_diff_pfx01',0,1,'MigrationId'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_users_vde','__EFMigrationsHistory','PRIMARY','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('db_vde','AutoOnderdeel','IX_AutoOnderdeel_OnderdeelId','2020-10-12 01:24:07','n_diff_pfx01',0,1,'OnderdeelId'),('db_vde','AutoOnderdeel','IX_AutoOnderdeel_OnderdeelId','2020-10-12 01:24:07','n_diff_pfx02',0,1,'OnderdeelId,AutoId'),('db_vde','AutoOnderdeel','IX_AutoOnderdeel_OnderdeelId','2020-10-12 01:24:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','AutoOnderdeel','IX_AutoOnderdeel_OnderdeelId','2020-10-12 01:24:07','size',1,NULL,'Number of pages in the index'),('db_vde','AutoOnderdeel','PRIMARY','2020-10-12 01:24:07','n_diff_pfx01',0,1,'AutoId'),('db_vde','AutoOnderdeel','PRIMARY','2020-10-12 01:24:07','n_diff_pfx02',0,1,'AutoId,OnderdeelId'),('db_vde','AutoOnderdeel','PRIMARY','2020-10-12 01:24:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','AutoOnderdeel','PRIMARY','2020-10-12 01:24:07','size',1,NULL,'Number of pages in the index'),('db_vde','Autos','PRIMARY','2020-10-12 01:32:27','n_diff_pfx01',14,1,'AutoId'),('db_vde','Autos','PRIMARY','2020-10-12 01:32:27','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Autos','PRIMARY','2020-10-12 01:32:27','size',1,NULL,'Number of pages in the index'),('db_vde','Bestelnummers','IX_Bestelnummers_OnderdeelId','2020-10-12 01:24:07','n_diff_pfx01',0,1,'OnderdeelId'),('db_vde','Bestelnummers','IX_Bestelnummers_OnderdeelId','2020-10-12 01:24:07','n_diff_pfx02',0,1,'OnderdeelId,BestelnummerId'),('db_vde','Bestelnummers','IX_Bestelnummers_OnderdeelId','2020-10-12 01:24:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Bestelnummers','IX_Bestelnummers_OnderdeelId','2020-10-12 01:24:07','size',1,NULL,'Number of pages in the index'),('db_vde','Bestelnummers','PRIMARY','2020-10-12 01:24:07','n_diff_pfx01',0,1,'BestelnummerId'),('db_vde','Bestelnummers','PRIMARY','2020-10-12 01:24:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Bestelnummers','PRIMARY','2020-10-12 01:24:07','size',1,NULL,'Number of pages in the index'),('db_vde','Onderdelen','PRIMARY','2020-10-12 01:24:07','n_diff_pfx01',0,1,'OnderdeelId'),('db_vde','Onderdelen','PRIMARY','2020-10-12 01:24:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Onderdelen','PRIMARY','2020-10-12 01:24:07','size',1,NULL,'Number of pages in the index'),('db_vde','Werken','IX_Werken_AutoId','2020-10-12 01:42:45','n_diff_pfx01',11,1,'AutoId'),('db_vde','Werken','IX_Werken_AutoId','2020-10-12 01:42:45','n_diff_pfx02',14,1,'AutoId,WerkId'),('db_vde','Werken','IX_Werken_AutoId','2020-10-12 01:42:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Werken','IX_Werken_AutoId','2020-10-12 01:42:45','size',1,NULL,'Number of pages in the index'),('db_vde','Werken','PRIMARY','2020-10-12 01:42:45','n_diff_pfx01',14,1,'WerkId'),('db_vde','Werken','PRIMARY','2020-10-12 01:42:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('db_vde','Werken','PRIMARY','2020-10-12 01:42:45','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2020-10-12 01:18:03','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2020-10-12 01:18:03','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2020-10-12 01:18:03','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2020-10-12 01:17:07','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2020-10-12 01:17:07','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2020-10-12 01:17:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2020-10-12 01:17:07','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2020-10-12 01:17:07','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2020-10-12 01:17:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2020-10-12 01:17:07','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -709,7 +741,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('db_users_vde','AspNetRoleClaim
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('db_users_vde','AspNetRoleClaims','2020-10-06 16:28:06',0,1,1),('db_users_vde','AspNetRoles','2020-10-06 16:28:06',0,1,0),('db_users_vde','AspNetUserClaims','2020-10-06 16:28:06',0,1,1),('db_users_vde','AspNetUserLogins','2020-10-06 16:28:06',0,1,1),('db_users_vde','AspNetUserRoles','2020-10-06 16:28:06',0,1,1),('db_users_vde','AspNetUserTokens','2020-10-06 16:28:06',0,1,0),('db_users_vde','AspNetUsers','2020-10-06 16:28:06',0,1,0),('db_users_vde','__EFMigrationsHistory','2020-10-06 16:28:05',0,1,0),('db_vde','Autos','2020-10-06 16:37:45',15,1,0),('db_vde','Onderdelen','2020-10-06 16:37:35',43,1,1),('db_vde','Werken','2020-10-06 16:37:55',15,1,1),('mysql','component','2020-10-06 16:18:32',0,1,0),('mysql','gtid_executed','2020-10-06 16:18:32',0,1,0),('sys','sys_config','2020-10-06 16:18:33',6,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('db_users_vde','AspNetRoleClaims','2020-10-12 01:18:02',0,1,1),('db_users_vde','AspNetRoles','2020-10-12 01:18:02',0,1,1),('db_users_vde','AspNetUserClaims','2020-10-12 01:18:02',0,1,1),('db_users_vde','AspNetUserLogins','2020-10-12 01:18:02',0,1,1),('db_users_vde','AspNetUserRoles','2020-10-12 01:18:02',0,1,1),('db_users_vde','AspNetUserTokens','2020-10-12 01:18:03',0,1,0),('db_users_vde','AspNetUsers','2020-10-12 01:18:03',0,1,2),('db_users_vde','__EFMigrationsHistory','2020-10-12 01:18:03',0,1,0),('db_vde','AutoOnderdeel','2020-10-12 01:24:07',0,1,1),('db_vde','Autos','2020-10-12 01:32:27',14,1,0),('db_vde','Bestelnummers','2020-10-12 01:24:07',0,1,1),('db_vde','Onderdelen','2020-10-12 01:24:07',0,1,0),('db_vde','Werken','2020-10-12 01:42:45',14,1,1),('mysql','component','2020-10-12 01:18:03',0,1,0),('mysql','gtid_executed','2020-10-12 01:17:07',0,1,0),('sys','sys_config','2020-10-12 01:17:07',6,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -721,9 +753,9 @@ DROP TABLE IF EXISTS `password_history`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_history` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Password_timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-  `Password` text COLLATE utf8_bin,
+  `Password` text CHARACTER SET utf8 COLLATE utf8_bin,
   PRIMARY KEY (`Host`,`User`,`Password_timestamp` DESC)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Password history for user accounts';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -770,11 +802,11 @@ DROP TABLE IF EXISTS `procs_priv`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `procs_priv` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `Db` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Routine_name` char(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Routine_type` enum('FUNCTION','PROCEDURE') COLLATE utf8_bin NOT NULL,
-  `Grantor` varchar(288) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Routine_type` enum('FUNCTION','PROCEDURE') CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `Grantor` varchar(288) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Proc_priv` set('Execute','Alter Routine','Grant') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Host`,`Db`,`User`,`Routine_name`,`Routine_type`),
@@ -800,11 +832,11 @@ DROP TABLE IF EXISTS `proxies_priv`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proxies_priv` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Proxied_host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `Proxied_user` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Proxied_user` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `With_grant` tinyint(1) NOT NULL DEFAULT '0',
-  `Grantor` varchar(288) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Grantor` varchar(288) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Host`,`User`,`Proxied_host`,`Proxied_user`),
   KEY `Grantor` (`Grantor`)
@@ -830,9 +862,9 @@ DROP TABLE IF EXISTS `role_edges`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `role_edges` (
   `FROM_HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `FROM_USER` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `FROM_USER` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `TO_HOST` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `TO_USER` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `TO_USER` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `WITH_ADMIN_OPTION` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   PRIMARY KEY (`FROM_HOST`,`FROM_USER`,`TO_HOST`,`TO_USER`)
 ) /*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC COMMENT='Role hierarchy and role grants';
@@ -1013,10 +1045,10 @@ DROP TABLE IF EXISTS `tables_priv`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tables_priv` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `Db` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `Table_name` char(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `Grantor` varchar(288) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Table_name` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `Grantor` varchar(288) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Table_priv` set('Select','Insert','Update','Delete','Create','Drop','Grant','References','Index','Alter','Create View','Show view','Trigger') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `Column_priv` set('Select','Insert','Update','References') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -1163,7 +1195,7 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `Host` char(255) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
-  `User` char(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `User` char(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `Select_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   `Insert_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   `Update_priv` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
@@ -1201,8 +1233,8 @@ CREATE TABLE `user` (
   `max_updates` int unsigned NOT NULL DEFAULT '0',
   `max_connections` int unsigned NOT NULL DEFAULT '0',
   `max_user_connections` int unsigned NOT NULL DEFAULT '0',
-  `plugin` char(64) COLLATE utf8_bin NOT NULL DEFAULT 'caching_sha2_password',
-  `authentication_string` text COLLATE utf8_bin,
+  `plugin` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'caching_sha2_password',
+  `authentication_string` text CHARACTER SET utf8 COLLATE utf8_bin,
   `password_expired` enum('N','Y') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N',
   `password_last_changed` timestamp NULL DEFAULT NULL,
   `password_lifetime` smallint unsigned DEFAULT NULL,
@@ -1275,4 +1307,4 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06 16:38:15
+-- Dump completed on 2020-10-12  1:45:05
