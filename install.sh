@@ -16,6 +16,7 @@ GITLINK="https://github.com/jensvde/$GITPREFIX.git"
 CERT_LOCATION="/home/$USERNAME/vandeneynde_eu.crt"
 KEY_LOCATION="/home/$USERNAME/vandeneynde.key"
 BUNDLE_LOCATION="/home/$USERNAME/vandeneynde_eu.ca-bundle"
+BUNDLE="vandeneynde_eu.ca-bundle"
 
 #Begin of program
 #Check if root
@@ -96,7 +97,7 @@ WantedBy=multi-user.target
 "> /etc/systemd/system/kestrel-$APPLOWERNAME.service
 sudo systemctl enable kestrel-$APPLOWERNAME.service
 sudo systemctl start kestrel-$APPLOWERNAME.service
-sudo systemctl status kestrel-$APPLOWERNAME.service
+#sudo systemctl status kestrel-$APPLOWERNAME.service
 
 #Install nginx config files
 sudo service nginx stop
@@ -301,10 +302,10 @@ sudo service nginx start
 service nginx restart  
 
 #Fixing webmin SSL
-cat /home/$USERNAME/$KEY_LOCATION /home/$USERNAME/$CERT_LOCATION > miniserv.pem
-echo "extracas=/etc/webmin/$BUNDLE_LOCATION" >> /etc/webmin/miniserv.conf
+cat  $KEY_LOCATION  $CERT_LOCATION > miniserv.pem
+echo "extracas=/etc/webmin/$BUNDLE" >> /etc/webmin/miniserv.conf
 cp /home/$USERNAME/miniserv.pem /etc/webmin
-cp /home/$USERNAME/$BUNDLE_LOCATION /etc/webmin
+cp $BUNDLE_LOCATION /etc/webmin
 service webmin restart
 
 #Giving user permission to use shutdown
