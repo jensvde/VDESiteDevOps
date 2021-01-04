@@ -15,6 +15,7 @@ GITPREFIX=VDESite
 GITLINK="https://github.com/jensvde/$GITPREFIX.git"
 CERT_LOCATION="/home/$USERNAME/vandeneynde_eu.crt"
 KEY_LOCATION="/home/$USERNAME/vandeneynde.key"
+BUNDLE_LOCATION="/home/$USERNAME/vandeneynde_eu.ca-bundle"
 
 #Begin of program
 #Check if root
@@ -301,9 +302,9 @@ service nginx restart
 
 #Fixing webmin SSL
 cat /home/$USERNAME/$KEY_LOCATION /home/$USERNAME/$CERT_LOCATION > miniserv.pem
-echo "extracas=/etc/webmin/cabundle.crt" >> /etc/webmin/miniserv.conf
+echo "extracas=/etc/webmin/$BUNDLE_LOCATION" >> /etc/webmin/miniserv.conf
 cp /home/$USERNAME/miniserv.pem /etc/webmin
-cp /home/$USERNAME/cabundle.crt /etc/webmin
+cp /home/$USERNAME/$BUNDLE_LOCATION /etc/webmin
 service webmin restart
 
 #Giving user permission to use shutdown
