@@ -1,0 +1,171 @@
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+--
+-- Host: localhost    Database: db
+-- ------------------------------------------------------
+-- Server version	8.0.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `autoonderdeel`
+--
+
+DROP TABLE IF EXISTS `autoonderdeel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `autoonderdeel` (
+  `AutoId` int NOT NULL,
+  `OnderdeelId` int NOT NULL,
+  PRIMARY KEY (`AutoId`,`OnderdeelId`),
+  KEY `IX_AutoOnderdeel_OnderdeelId` (`OnderdeelId`),
+  CONSTRAINT `FK_AutoOnderdeel_Autos_AutoId` FOREIGN KEY (`AutoId`) REFERENCES `autos` (`AutoId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_AutoOnderdeel_Onderdelen_OnderdeelId` FOREIGN KEY (`OnderdeelId`) REFERENCES `onderdelen` (`OnderdeelId`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `autoonderdeel`
+--
+
+LOCK TABLES `autoonderdeel` WRITE;
+/*!40000 ALTER TABLE `autoonderdeel` DISABLE KEYS */;
+INSERT INTO `autoonderdeel` VALUES (7,1),(10,1),(11,1),(13,2),(13,3),(13,4),(14,5),(14,6),(14,7),(14,8),(13,9),(7,10),(2,11),(2,12),(2,13),(2,14),(2,15),(2,16),(2,17),(2,18),(2,19),(2,20),(3,21),(13,22),(12,23),(15,24),(6,25),(6,26),(6,27),(4,28),(12,29),(4,30),(6,31),(11,32),(11,33),(15,34),(15,35),(12,36),(15,37),(12,38),(15,39),(11,40),(12,41);
+/*!40000 ALTER TABLE `autoonderdeel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `autos`
+--
+
+DROP TABLE IF EXISTS `autos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `autos` (
+  `AutoId` int NOT NULL AUTO_INCREMENT,
+  `Naam` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `OlieInhoud` double NOT NULL,
+  `Bouwjaar` int NOT NULL,
+  `CylinderInhoud` double NOT NULL,
+  `VermogenKw` double NOT NULL,
+  `MotorCode` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Banden` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `DatumAangemaakt` datetime(6) NOT NULL,
+  PRIMARY KEY (`AutoId`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `autos`
+--
+
+LOCK TABLES `autos` WRITE;
+/*!40000 ALTER TABLE `autos` DISABLE KEYS */;
+INSERT INTO `autos` VALUES (1,'207 Nadine',0,2010,1400,50,'C8HZ','185/65R15/88H','0001-01-01 00:00:00.000000'),(2,'208 Jens',4.25,2012,1600,115,'CA5FV8','195/55/16  91V','0001-01-01 00:00:00.000000'),(3,'berlingo wit 01 kris',5,2001,1900,0,'MBWJYB',NULL,'0001-01-01 00:00:00.000000'),(4,'C Max Voet',0,2014,1600,85,'T1DB1H',NULL,'0001-01-01 00:00:00.000000'),(5,'C220 Sabrina',6.5,2008,2148,120,NULL,NULL,'0001-01-01 00:00:00.000000'),(6,'Captiva Eric',0,2008,2000,93,NULL,NULL,'0001-01-01 00:00:00.000000'),(7,'fabia Ron',4.4,2008,1400,51,NULL,NULL,'0001-01-01 00:00:00.000000'),(8,'fiesta magda',4.2,2010,0,0,NULL,NULL,'0001-01-01 00:00:00.000000'),(9,'Ford Ranger',2.5,2016,2895,100,NULL,NULL,'0001-01-01 00:00:00.000000'),(10,'Golf Ilse',4.5,2007,2000,0,NULL,NULL,'0001-01-01 00:00:00.000000'),(11,'Golf Plus JP',4.5,2005,1900,77,'BKC','195/65/15  91H','0001-01-01 00:00:00.000000'),(12,'H1 Eddy',7.5,2011,2500,120,NULL,'215/70/R16C  108/106T','0001-01-01 00:00:00.000000'),(13,'Octavia Kris',4.5,2011,1600,77,'CAY',NULL,'0001-01-01 00:00:00.000000'),(14,'polo zwart jansens',4.3,2010,1600,55,'CAY',NULL,'0001-01-01 00:00:00.000000'),(15,'Tucson Patje',5.5,2016,1700,85,'D4FD',NULL,'0001-01-01 00:00:00.000000');
+/*!40000 ALTER TABLE `autos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bestelnummers`
+--
+
+DROP TABLE IF EXISTS `bestelnummers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bestelnummers` (
+  `BestelnummerId` int NOT NULL AUTO_INCREMENT,
+  `Nr` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `OnderdeelId` int DEFAULT NULL,
+  PRIMARY KEY (`BestelnummerId`),
+  KEY `IX_Bestelnummers_OnderdeelId` (`OnderdeelId`),
+  CONSTRAINT `FK_Bestelnummers_Onderdelen_OnderdeelId` FOREIGN KEY (`OnderdeelId`) REFERENCES `onderdelen` (`OnderdeelId`) ON DELETE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bestelnummers`
+--
+
+LOCK TABLES `bestelnummers` WRITE;
+/*!40000 ALTER TABLE `bestelnummers` DISABLE KEYS */;
+INSERT INTO `bestelnummers` VALUES (1,'1 457 429 192',NULL,1),(2,'P9192         1457429192',NULL,1),(3,'1457 070 008',NULL,2),(4,'KX220D',NULL,2),(5,'1 457 429 192',NULL,3),(6,'0986 494 019',NULL,4),(7,'F 026 407 023',NULL,5),(8,'F 026 400 391',NULL,6),(9,'0 450 906 500',NULL,7),(10,'1987 435 002',NULL,8),(11,'F026 407 023',NULL,9),(12,'OX388D',NULL,9),(13,'0 986 494 019',NULL,10),(14,'F 026 400 219',NULL,11),(15,'0 242 135 518',NULL,12),(16,'0 986 628 533',NULL,13),(17,'3 397 007 414',NULL,14),(18,'3 397 004 631',NULL,15),(19,'VKMC 33410',NULL,16),(20,'0 986 424 825',NULL,17),(21,'0 986 479 548',NULL,18),(22,'102466',NULL,19),(23,'1 457 429 249',NULL,20),(24,'OC 100 ',NULL,21),(26,'OC 976',NULL,21),(27,'1987 429 404',NULL,22),(28,'HC 80219',NULL,23),(29,'HC 8240',NULL,24),(30,'S 0214',NULL,25),(31,'N 4437',NULL,26),(32,'A 8500',NULL,27),(33,'F 026 400 492',NULL,28),(34,'CB 210487',NULL,29),(35,'1 987 435 018',NULL,30),(36,'P 7001',NULL,31),(37,'1987432097',NULL,32),(38,'1987429404',NULL,33),(39,'F 026 407 147',NULL,34),(40,'HA 743',NULL,35),(41,'HA-720',NULL,36),(42,'HF 616',NULL,37),(43,'KF1478',NULL,38),(44,'0986 494 559',NULL,39),(45,'1457070007',NULL,40),(46,'KO-094',NULL,41),(47,'HO-607',NULL,41),(48,'MO-400',NULL,41);
+/*!40000 ALTER TABLE `bestelnummers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `onderdelen`
+--
+
+DROP TABLE IF EXISTS `onderdelen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `onderdelen` (
+  `OnderdeelId` int NOT NULL AUTO_INCREMENT,
+  `Beschrijving` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Merk` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  PRIMARY KEY (`OnderdeelId`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `onderdelen`
+--
+
+LOCK TABLES `onderdelen` WRITE;
+/*!40000 ALTER TABLE `onderdelen` DISABLE KEYS */;
+INSERT INTO `onderdelen` VALUES (1,'Olie filter','Bosch'),(2,'Brandstof filter',' Bosch'),(3,'Interieur filter','Bosch'),(4,'Remblokken voor','Bosch'),(5,'Olie filter','Bosch'),(6,'Lucht filter','Bosch'),(7,'Brandstof filter','Bosch'),(8,'Interieur filter','Bosch'),(9,'Olie filter','Bosch'),(10,'Remblokken voor','Bosch'),(11,'Lucht filter','Bosch'),(12,'Bougie','Bosch'),(13,'Interieur filter','Bosch'),(14,'Wissers voor','Bosch'),(15,'Wissers achter','Bosch'),(16,'Waterpomp, multieriem, spanner set','SKF'),(17,'Remblokken voor','Bosch'),(18,'Rremschijf voor','Bosch'),(19,'Poulie waterpomp','Febi'),(20,'Olie filter','Bosch'),(21,'Olie filter','Knecht'),(22,'Lucht filter','Bosch'),(23,'Interieur filter','AMC'),(24,'Pollen filter','AMC'),(25,'Lucht filter','Bosch'),(26,'Brandstof filter','Bosch'),(27,'Interieur filter','Bosch'),(28,'Lucht filter','Bosch'),(29,'Remblokken achter','Coldax'),(30,'Interieur filter','Bosch'),(31,'Olie filter','Bosch'),(32,'Interieur filter','Bosch'),(33,'Lucht filter','Bosch'),(34,'Olie filter','Bosch'),(35,'Lucht filter','AMC'),(36,'Lucht filter','AMC'),(37,'Brandstof filter','AMC'),(38,'Brandstof filter','AMC'),(39,'Remblokken voor','Bosch'),(40,'Brandstof filter','Bosch'),(41,'Olie filter','AMC');
+/*!40000 ALTER TABLE `onderdelen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `werken`
+--
+
+DROP TABLE IF EXISTS `werken`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `werken` (
+  `WerkId` int NOT NULL AUTO_INCREMENT,
+  `AutoId` int DEFAULT NULL,
+  `KilometerStand` int NOT NULL,
+  `OliefilterVervangen` tinyint(1) NOT NULL,
+  `LuchtfilterVervangen` tinyint(1) NOT NULL,
+  `BrandstoffilterVervangen` tinyint(1) NOT NULL,
+  `InterieurfilterVervangen` tinyint(1) NOT NULL,
+  `Extra` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Datum` datetime(6) NOT NULL,
+  PRIMARY KEY (`WerkId`),
+  KEY `IX_Werken_AutoId` (`AutoId`),
+  CONSTRAINT `FK_Werken_Autos_AutoId` FOREIGN KEY (`AutoId`) REFERENCES `autos` (`AutoId`) ON DELETE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `werken`
+--
+
+LOCK TABLES `werken` WRITE;
+/*!40000 ALTER TABLE `werken` DISABLE KEYS */;
+INSERT INTO `werken` VALUES (1,11,130000,1,1,1,1,'Distributieriem set + waterpomp,  multi V riem,  vrijloop poulie  alternator,  stofkap cardan rv wielkant,  achterste draagarmrubbers L+R vooraan,   ','2020-06-12 00:00:22.954000'),(2,2,91001,0,0,0,0,'Remschijven voor, poulie waterpomp','2020-08-17 00:00:52.105000'),(3,2,91000,1,1,0,0,'Batterij, banden, waterpomp, multie v riem, spanner, wissers voor, wisser achter, remblokken voor, bougies','2020-08-09 00:00:27.187000'),(4,15,91000,1,1,1,1,'Remblokken voor','2020-06-26 00:00:30.212000'),(5,14,134300,1,0,0,0,'dpf drukverschil sensor','2020-07-25 00:00:38.903000'),(6,7,141000,1,0,0,0,'Remblokken voor','2020-07-25 00:00:59.214000'),(7,12,185000,1,0,0,0,NULL,'2020-06-11 00:00:38.122000'),(8,10,156500,1,0,0,0,NULL,'2020-07-23 00:00:56.207000'),(9,13,129500,1,0,0,0,'Remblokken voor','2020-06-28 00:00:15.707000'),(10,13,125500,1,1,1,1,NULL,'2020-06-28 00:00:57.801000'),(11,4,121400,0,1,0,0,NULL,'2020-08-12 00:00:26.214000'),(12,5,188500,1,1,1,1,NULL,'2020-07-15 00:00:45.711000'),(13,3,166000,1,0,0,0,NULL,'2020-06-28 00:00:05.762000'),(14,12,175000,1,0,0,0,'Remblokken achter','2020-06-11 00:00:28.364000'),(15,8,216800,1,0,0,0,NULL,'2020-07-28 00:00:53.790000');
+/*!40000 ALTER TABLE `werken` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-01-04  5:15:03

@@ -21,3 +21,5 @@ read -p "Press any key to resume ..."
 
 sudo sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo service mysql restart
+
+sudo mysql -e "SHOW DATABASES;"
