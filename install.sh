@@ -8,13 +8,13 @@ DOMAINNAME=vandeneynde.eu
 USERNAME="jens"
 WEBMIN_USERNAME=peggy
 WEBMIN_PASSWORD=password
-SSL_CERT_NAME="/home/$USERNAME/transip-ssl-twinkeltjenijlen.be-decrypted-certificate.zip"
+SSL_CERT_NAME="/home/$USERNAME/vandeneynde_eu.zip"
 APPNAME=VandenEynde
 APPLOWERNAME=vandeneynde
 GITPREFIX=VDESite
 GITLINK="https://github.com/jensvde/$GITPREFIX.git"
-CERT_LOCATION="/home/$USERNAME/certificate.crt"
-KEY_LOCATION="/home/$USERNAME/certificate.key"
+CERT_LOCATION="/home/$USERNAME/vandeneynde_eu.crt"
+KEY_LOCATION="/home/$USERNAME/vandeneynde.key"
 
 #Begin of program
 #Check if root
@@ -300,7 +300,7 @@ sudo service nginx start
 service nginx restart  
 
 #Fixing webmin SSL
-cat /home/$USERNAME/certificate.key /home/$USERNAME/certificate.crt > miniserv.pem
+cat /home/$USERNAME/$KEY_LOCATION /home/$USERNAME/$CERT_LOCATION > miniserv.pem
 echo "extracas=/etc/webmin/cabundle.crt" >> /etc/webmin/miniserv.conf
 cp /home/$USERNAME/miniserv.pem /etc/webmin
 cp /home/$USERNAME/cabundle.crt /etc/webmin
